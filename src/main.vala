@@ -166,7 +166,16 @@ class Commands : Object
         string[] names = new string[0];
         try
         {
+            string[] list1 = new string[0];
+            list1 = busobj.list_activatable_names();
             names = busobj.list_names();
+            foreach ( var name in list1 )
+            {
+                if ( ! (name in names) )
+                {
+                    names += name;
+                }
+            }
         }
         catch (GLib.Error e)
         {
